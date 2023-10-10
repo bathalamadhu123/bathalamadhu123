@@ -1,0 +1,40 @@
+pipeline{
+    agent any
+    stages{
+        stage("deletaing user"){
+            steps{
+               sh"sudo userdel jenkins" 
+            }
+        }
+        stage("verifiy users"){
+            steps{
+               sh"sudo cat /etc/passwd"
+            }
+        }
+        stage("adding user"){
+           steps{
+            sh "sudo uaeradd jenkins"
+           }
+           
+        }
+        stage("test"){
+            steps{
+             sh'''
+             echo a
+             echo b
+             echo c
+             '''
+            }
+        }
+    }
+    post {
+        success{
+            echo" The Build is success"
+        }
+        failuer{
+            echo" The Build is failuer"
+        }
+    }
+
+
+}
