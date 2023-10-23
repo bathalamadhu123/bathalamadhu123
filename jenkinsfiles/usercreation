@@ -1,23 +1,23 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("deletaing user"){
+    stages {
+        stage("deletaing user") {
             steps{
-               sh"sudo userdel jenkins" 
+               sh "sudo userdel jenkins" 
             }
         }
-        stage("verifiy users"){
+        stage("verifiy users") {
             steps{
-               sh"sudo cat /etc/passwd"
+               sh "sudo cat /etc/passwd"
             }
         }
-        stage("adding user"){
+        stage("adding user") {
            steps{
             sh "sudo uaeradd jenkins"
            }
            
         }
-        stage("test"){
+        stage("test") {
             steps{
              sh'''
              echo a
@@ -28,13 +28,11 @@ pipeline{
         }
     }
     post {
-        success{
+        Success {
             echo" The Build is success"
         }
-        failuer{
-            echo" The Build is failuer"
+        Failuer {
+            echo" The Build is Failuer"
         }
     }
-
-
 }
