@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {'label index.html' }
     stages {
         stage ("checkout") {
             steps {
