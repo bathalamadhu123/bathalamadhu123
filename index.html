@@ -1,17 +1,18 @@
 pipeline {
-    agent {label 'index.html' }
+    agent any
     stages {
-        stage ("checkout") {
+        stage ("Git clone") {
             steps {
                 checkout SCM
             }
         }
-        stage ("Deploy") {
+        stage ("Deployment") {
             steps {
-                sh'''
-               sudo cp /var/lib/jenkins/workspace/${JOB NAME 01}/index.html/var/www/html/
-                '''
-
+                script {
+                sh '''
+                 sudo cp /var/lib/jenkins/workspace/${JOB NAME 01}/index.html/var/www/html/
+                 '''
+              }
             }
         }
     }
