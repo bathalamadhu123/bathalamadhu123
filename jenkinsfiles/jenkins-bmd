@@ -1,0 +1,31 @@
+pipeline {
+    
+    agent {label "jenkins-bmd"}
+
+    stages {
+        stage("parallel stages") {
+            parallel {
+                stage('stage 1') {
+                   steps {
+                    sh "cat /etc/passwd"
+
+                   }
+
+                }
+                stage('stage 2') {
+                    steps {
+                        sh "df -h"
+                    }
+
+                }
+                stage('stage 3') {
+                    steps {
+                        sh "cat /etc/os-release"
+
+                    }
+                }
+
+            }
+        }
+    }
+}
